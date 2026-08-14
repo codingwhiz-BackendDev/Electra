@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * ELECTRA – Global Styles
+ * Theme: White + Light Green
+ *
+ * NEXT.JS / TAILWIND v4 CONCEPT:
+ * ─────────────────────────────────
+ * Tailwind v4 uses @theme inline to define custom design tokens.
+ * These become CSS custom properties AND Tailwind utility classes.
+ *
+ * e.g.  --color-brand-500  →  bg-brand-500, text-brand-500, border-brand-500
+ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── Brand palette ─────────────────────────── */
+  --color-brand-50:  #f0fdf4;
+  --color-brand-100: #dcfce7;
+  --color-brand-200: #bbf7d0;
+  --color-brand-300: #86efac;
+  --color-brand-400: #4ade80;
+  --color-brand-500: #22c55e;
+  --color-brand-600: #16a34a;
+  --color-brand-700: #15803d;
+  --color-brand-800: #166534;
+  --color-brand-900: #14532d;
+
+  /* ── Semantic aliases ───────────────────────── */
+  --color-background: #ffffff;
+  --color-surface:    #f8fffe;
+  --color-foreground: #0f1a0f;
+  --color-muted:      #6b7280;
+  --color-border:     #d1fae5;
+
+  /* ── Typography ─────────────────────────────── */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base styles ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
+
+/* ── Utility: focus ring ──────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+/* ── Custom scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-brand-50); }
+::-webkit-scrollbar-thumb { background: var(--color-brand-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-brand-500); }
